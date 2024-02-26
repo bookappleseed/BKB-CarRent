@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management System</title>
+</head>
+<body>
+    <h1>Car Management System</h1>
+    <h2>Add a Car</h2>
+    <form action="/add_car" method="post">
+        <label for="car_id">Car ID:</label>
+        <input type="text" id="car_id" name="car_id" required><br><br>
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required><br><br>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required><br><br>
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required><br><br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required><br><br>
+        <button type="submit">Add Car</button>
+    </form>
+
+    <h2>List of Cars</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Car ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car.car_id }}</td>
+                <td>{{ car.brand }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.price }}</td>
+                <td>
+                    <form action="/update_car" method="post">
+                        <input type="hidden" name="car_id" value="{{ car.car_id }}">
+                        <label for="brand">Brand:</label>
+                        <input type="text" id="brand" name="brand" value="{{ car.brand }}" required><br><br>
+                        <label for="model">Model:</label>
+                        <input type="text" id="model" name="model" value="{{ car.model }}" required><br><br>
+                        <label for="year">Year:</label>
+                        <input type="number" id="year" name="year" value="{{ car.year }}" required><br><br>
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="price" value="{{ car.price }}" required><br><br>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/delete_car" method="post">
+                        <input type="hidden" name="car_id" value="{{ car.car_id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
