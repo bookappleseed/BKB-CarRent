@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'BKB-CarRents'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B5CA753EBD24B579257BD516582246C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8FD9D71C185549E9B9AAB5DF49710A8A }}
