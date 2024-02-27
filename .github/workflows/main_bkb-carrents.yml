@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v1
         with:
           python-version: '3.12'
 
@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'BKB-CarRents'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8FD9D71C185549E9B9AAB5DF49710A8A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1AF34E11FAB148DD9159D82582034001 }}
