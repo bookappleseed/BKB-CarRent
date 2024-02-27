@@ -22,7 +22,7 @@ class Car(db.Model):
     brand = db.Column(db.String(50), nullable=False)
     model = db.Column(db.String(50), nullable=False)
     year = db.Column(db.Integer, nullable=False)
-    price = db.Column(db.Float, nullable=False)  # Changed from price_per_day to price
+    price = db.Column(db.Float, nullable=False)
 
 @app.route('/')
 def index():
@@ -35,8 +35,8 @@ def add_car():
     brand = request.form['brand']
     model = request.form['model']
     year = int(request.form['year'])
-    price = float(request.form['price'])  # Updated from price_per_day to price
-    car = Car(car_id=car_id, brand=brand, model=model, year=year, price=price)  # Updated from price_per_day to price
+    price = float(request.form['price'])
+    car = Car(car_id=car_id, brand=brand, model=model, year=year, price=price)
     db.session.add(car)
     db.session.commit()
     return redirect(url_for('index'))
@@ -49,7 +49,7 @@ def update_car():
         car.brand = request.form['brand']
         car.model = request.form['model']
         car.year = int(request.form['year'])
-        car.price = float(request.form['price'])  # Updated from price_per_day to price
+        car.price = float(request.form['price'])
         db.session.commit()
         return redirect(url_for('index'))
     return "Car not found."
@@ -58,7 +58,7 @@ def update_car():
 @app.route('/delete_car', methods=['POST'])
 def delete_car():
     car_id = request.form['car_id']
-    car = Car.query.get(car_id)  # Using get() assuming car_id is the primary key
+    car = Car.query.get(car_id)
     if car:
         db.session.delete(car)
         db.session.commit()
